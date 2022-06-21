@@ -15,7 +15,7 @@ const characterSlice = createSlice({
                 (set) => set.id === id && set.name === name,
             );
             if (isFavAlready) return state;
-            return [...state, { id, name },];
+            return [...state, { id, name }];
         },
         removeCharacterFav: (state, { payload }) => {
             const { id, name } = payload;
