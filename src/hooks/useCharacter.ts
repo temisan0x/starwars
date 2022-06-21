@@ -45,3 +45,12 @@ interface Character {
     vehicles: string[],
     url: string;
 };
+
+export function useCharacter(data: Character | undefined) {
+    const [films, setFilms] = useState(<Film[]>[]);
+    const [Planet, setPlanet] = useState(<Planet[]>[]);
+    const [vehicles, setVehicles] = useState(<Vehicle[]>[]);
+    const [starship, setStarship] = useState(<Starship[]>[]);
+    const [species, setSpecies] = useState(<Species[]>[]);
+    const [homeworld, setHomeworld] = useState(<HomeWorld[]>[])
+}
