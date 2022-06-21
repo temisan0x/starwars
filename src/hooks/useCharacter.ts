@@ -70,9 +70,7 @@ export function useCharacter(data: Character | undefined) {
 
                 setFilms((prevState) => {
                     if (prevState.includes(filmData.title)) return prevState;
-                    return [
-                        ...prevState,
-                        {
+                    return [...prevState, {
                             title: filmData.title,
                             url: filmData.url,
                         },
@@ -93,13 +91,36 @@ export function useCharacter(data: Character | undefined) {
 
                 setPlanet((prevState) => {
                     if (prevState.includes(planetData.name)) return prevState;
-                    return [...prevState, { name: planetData.name, url: planetData.url }]
+                    return [...prevState, {
+                        name: planetData.name,
+                        url: planetData.url
+                    }]
                 })
             })
         } catch {
         } finally {
             setLoading(false);
         }
-    },[data?.planets])
+    }, [data?.planets]);
+
+    const getVehicles = useCallback(async () => {
+        try {
+            data?.vehicles.forEach(async (vehicles) => {
+                const response = await fetch(vehicles);
+                const vehicleData = await response.json();
+
+                setVehicles((prevState) => {
+                    if (prevState.includes(vehicleData.name)) return prevState;
+                    return [...prevState, {
+                        name: vehicleData.name,
+                        url: vehicleData.url
+                    }]
+                })
+            })
+        } catch {
+        } finally {
+            setLoading(false);
+        }
+    },[])
 }
 
