@@ -50,9 +50,9 @@ interface Character {
 export function useCharacter(data: Character | undefined) {
 
     const [films, setFilms] = useState(<Film[]>[]);
-    const [Planet, setPlanet] = useState(<Planet[]>[]);
+    const [planets, setPlanets] = useState(<Planet[]>[]);
     const [vehicles, setVehicles] = useState(<Vehicle[]>[]);
-    const [starship, setStarship] = useState(<Starship[]>[]);
+    const [starships, setStarships] = useState(<Starship[]>[]);
     const [species, setSpecies] = useState(<Species[]>[]);
     const [homeworld, setHomeworld] = useState<HomeWorld>({
         name: "",
@@ -89,7 +89,7 @@ export function useCharacter(data: Character | undefined) {
                 const response = await fetch(planet);
                 const planetData = await response.json();
 
-                setPlanet((prevState) => {
+                setPlanets((prevState) => {
                     if (prevState.includes(planetData.name)) return prevState;
                     return [...prevState, {
                         name: planetData.name,
@@ -129,7 +129,7 @@ export function useCharacter(data: Character | undefined) {
                 const response = await fetch(starships);
                 const starshipData = await response.json();
                 
-                setStarship((prevState) => {
+                setStarships((prevState) => {
                     if (prevState.includes(starshipData.name)) return prevState;
                     return [...prevState, {
                         name: starshipData.name,
@@ -178,6 +178,39 @@ export function useCharacter(data: Character | undefined) {
             setLoading(false);
         }
     }, [data?.homeworld]);
+
+
+    useEffect(() => {
+        getFilms()
+    }, [getFilms]);
+
+    useEffect(() => {
+        getPlanets()
+    }, [getPlanets]);
+    
+    useEffect(() => {
+        getVehicles()
+    }, [getVehicles]);
+
+    useEffect(() => {
+        getStarShip()
+    }, [getStarShip]);
+
+    useEffect(() => {
+        getSpecies()
+    }, [getSpecies]);
+
+    useEffect(() => {
+        getHomeWorld()
+    }, [getHomeWorld]);
+
+    return {
+        loading,
+        homeworld,
+        planets,
+        films,
+        starships,
+        vehicles,
+        species
+    };
 }
-
-
