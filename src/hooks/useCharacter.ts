@@ -121,6 +121,63 @@ export function useCharacter(data: Character | undefined) {
         } finally {
             setLoading(false);
         }
-    },[])
+    }, [data?.vehicles]);
+
+    const getStarShip = useCallback(async () => {
+        try {
+            data?.starships.forEach(async (starships) => {
+                const response = await fetch(starships);
+                const starshipData = await response.json();
+                
+                setStarship((prevState) => {
+                    if (prevState.includes(starshipData.name)) return prevState;
+                    return [...prevState, {
+                        name: starshipData.name,
+                        url: starshipData.url,
+                    }]
+                })
+            })
+        } catch {
+        } finally {
+            setLoading(false);
+        }
+    }, [data?.starships]);
+
+    const getSpecies = useCallback(async () => {
+        try {
+            data?.species.forEach(async (species) => {
+                const response = await fetch(species);
+                const speciesData = await response.json();
+                
+                setSpecies((prevState) => {
+                    if (prevState.includes(speciesData.name)) return prevState;
+                    return [...prevState, {
+                        name: speciesData.name,
+                        url: speciesData.url,
+                    }]
+                })
+            })
+        } catch {
+        } finally {
+            setLoading(false);
+        }
+    }, [data?.species]);
+
+    const getHomeWorld = useCallback(async () => {
+        try {
+            if (!data?.homeworld) return;
+                const response = await fetch(data.homeworld);
+                const homeWorldData = await response.json();
+                
+            setHomeworld({
+                name: homeWorldData.name,
+                url: homeWorldData.url
+                })
+        } catch {
+        } finally {
+            setLoading(false);
+        }
+    }, [data?.homeworld]);
 }
+
 
