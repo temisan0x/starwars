@@ -49,11 +49,11 @@ interface Character {
 
 export function useCharacter(data: Character | undefined) {
 
-    const [films, setFilms] = useState(<Film[]>[]);
-    const [planets, setPlanets] = useState(<Planet[]>[]);
-    const [vehicles, setVehicles] = useState(<Vehicle[]>[]);
-    const [starships, setStarships] = useState(<Starship[]>[]);
-    const [species, setSpecies] = useState(<Species[]>[]);
+    const [films, setFilms] = useState<Film[]>([]);
+    const [planets, setPlanets] = useState<Planet[]>([]);
+    const [vehicles, setVehicles] = useState<Vehicle[]>([]);
+    const [starships, setStarships] = useState<Starship[]>([]);
+    const [species, setSpecies] = useState<Species[]>([]);
     const [homeworld, setHomeworld] = useState<HomeWorld>({
         name: "",
         url: "",
