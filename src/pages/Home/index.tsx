@@ -1,8 +1,19 @@
-import React from "react";
+import React,{ useCallback, useEffect, useState} from "react";
+import { useSelector } from "react-redux";
 import { swapi } from "../../api/api";
+import { RootState } from "../../redux/store";
+import { Character } from "../../types/Characte.type";
 
-export const index = () => {
-    console.log(swapi);
+export default function Home() {
+    const [data, setData] = useState();
 
-    return <div>index</div>;
-};
+    const favouriteCharacters = useSelector(
+        (state:RootState)=> state.character,
+    );
+
+    return (
+        <div>
+            hello
+        </div>
+    )
+}

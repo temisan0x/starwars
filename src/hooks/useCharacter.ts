@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Character } from "../types/Characte.type";
 
 type Film = {
     title: string;
@@ -29,23 +30,6 @@ type HomeWorld = {
     name: string;
     url: string;
 };
-
-//attributes
-interface Character {
-    name: string;
-    height: string;
-    gender: string;
-    skin_color: string;
-    eye_color: string;
-    birth_year: string;
-    homeworld: string;
-    starships: string[];
-    films: string[];
-    species: string[];
-    vehicles: string[];
-    planets: string[];
-    url: string;
-}
 
 export function useCharacter(data: Character | undefined) {
 

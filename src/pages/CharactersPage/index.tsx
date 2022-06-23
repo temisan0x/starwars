@@ -1,11 +1,36 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Character, useCharacter } from "../../hooks/useCharacter";
+import {swapi} from '../../api/api'
 
 const CharactersPage = () => {
-    
-    const [data, setData] = useState()
+    const [data, setData] = useState<Character>();
+    const { films, homeworld, loading:isloadingCharacter, planets, species, starships, vehicles } =
+        useCharacter(data); //passed our states & redeclared a loading state
+    const [loading, setLoading] = useState<boolean>(true)
+    const { id } = useParams();
 
+    // const getCharactersData = useCallback(async () => {
+    //     try {
+    //         ///people/:id/ -- get a specific people resource
+    //         const response = await swapi.get(`/people/${id}`);
+    //         setData(response.data);
+    //     } catch { }
+    //     finally {
+    //         setLoading(false)
+    //     }
+    // }, [id]);
 
-    return <div>Characters</div>;
+    // useEffect(() => {
+    //     getCharactersData()
+    // }, [getCharactersData]);
+
+    // if(loading) return <div>Loading</div>
+    return (
+        <div>
+        {data?.name}
+        </div>
+    )
 };
 
 export default CharactersPage;
