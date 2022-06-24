@@ -7,10 +7,6 @@ import { Character } from "../../types/Characte.type";
 export default function Home() {
     const [data, setData] = useState();
 
-    const favouriteCharacters = useSelector(
-        (state:RootState)=> state.character,
-    );
-
     return (
         <div>
             hello

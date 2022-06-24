@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Character, useCharacter } from "../../hooks/useCharacter";
+import { useCharacter } from "../../hooks/useCharacter";
 import {swapi} from '../../api/api'
+import { Character } from "../../types/Characte.type";
 
 const CharactersPage = () => {
     const [data, setData] = useState<Character>();
