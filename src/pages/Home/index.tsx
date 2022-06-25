@@ -37,7 +37,10 @@ export default function Home() {
 
     return (
         <div>
-            {/* {data} */}
+            {loading ? <div>loading</div> :
+                <div>
+                    {data?.count}
+                </div>}
         </div>
     )
 }
