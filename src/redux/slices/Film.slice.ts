@@ -5,9 +5,11 @@ export interface IFilmFav {
     title: string;
 }
 
+const initialState: IFilmFav[] = []
+
 const filmSlice = createSlice({
     name: "film",
-    initialState: <IFilmFav[]>[],
+    initialState,
     reducers: {
         setFilmFav: (state, { payload }) => {
             const { id, title } = payload;
