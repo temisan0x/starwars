@@ -1,14 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit';
-import characterReducer from './slices/Character.slice';
-import filmSlice from './slices/Film.slice';
+import { configureStore, Action } from '@reduxjs/toolkit';
+import { ThunkAction } from '@reduxjs/toolkit';
+import rootReducer, {RootState} from './rootReducer';
 
 const store = configureStore({
-    reducer: {
-        character: characterReducer,
-        film: filmSlice,
-    },
+    reducer: rootReducer
 });
 
-export default store;
-export type RootState = ReturnType<typeof store.getState>;
+if (process.env.NODE_ENV === 'development' && module.hot) {
+    module.hot.accept('./rootReducer', () => {
+        const newRootReducer = require('./rootReducer').default
+        store.replaceReducer(newRootReducer);
+    });
+}
+
 export type AppDispatch = typeof store.dispatch;
+export type AppThunk = ThunkAction<void, RootState,null, Action<string>>
+export default store;
