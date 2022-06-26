@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { swapi } from "../../api/api";
-import { RootState } from "../../redux/store";
+import { RootState } from "../../redux/rootReducer";
 import { Character } from "../../types/Characte.type";
 import { CharacterDataTypes } from '../../types/CharacterDataTypes';
 

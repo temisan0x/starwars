@@ -5,10 +5,11 @@ export interface ICharacterFav {
     name: string
 };
 
+const initialState: ICharacterFav[] = [];
 
 const characterSlice = createSlice({
     name: "character",
-    initialState: <ICharacterFav[]>[],
+    initialState,
     reducers: {
         setCharacterFav: (state, {payload}) => {
             const { id, name } = payload;//incoming state
