@@ -10,7 +10,7 @@ const characterSlice = createSlice({
     initialState: <ICharacterFav[]>[],
     reducers: {
         setCharacterFav: (state, {payload}) => {
-            const { id, name } = payload;
+            const { id, name } = payload;//incoming state
             const isFavAlready = state.find(
                 (set) => set.id === id && set.name === name,
             );

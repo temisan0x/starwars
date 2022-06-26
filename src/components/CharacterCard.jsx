@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setCharacterFav, removeCharacterFav } from '../redux/slices/characterReducer'; 
+import { setCharacterFav, removeCharacterFav } from '../redux/slices/Character.slice'; 
 
 const CharacterCard = () => {
     return (
@@ -9,4 +9,4 @@ const CharacterCard = () => {
     )
 }
 
-export default CharacterCard
+export default CharacterCard;
