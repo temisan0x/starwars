@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface IFilmFav {
     id: string;
@@ -11,18 +11,15 @@ const filmSlice = createSlice({
     name: "film",
     initialState,
     reducers: {
-        setFilmFav: (state, { payload }) => {
-            const { id, title } = payload;
-
+        setFilmFav: (state,action: PayloadAction<IFilmFav>) => {
             const isFavAlready = state.find(
-                (set) => set.id === id && set.title === title,
-            );
-            if (isFavAlready) return state;
-            return [...state, { id, title }]
-        },
-        removeFilmFav: (state, { payload }) => {
-            const { id, title } = payload;
-            return state.filter((film) => film.title !== title || film.id !== id);
+                (set) => set.id === action.payload.id && set.title === action.payload.title);
+            
+                if (isFavAlready) return state;
+                return [...state, {id: action.payload.id, title: action.payload.title}]
+            },
+        removeFilmFav: (state, action: PayloadAction<IFilmFav>) => {
+            return state.filter((film) => film.title !== action.payload.title || film.id !== action.payload.id);
         }
     }
 });
