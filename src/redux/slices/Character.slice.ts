@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface ICharacterFav {
-    id: string
-    name: string
+    id: string;
+    name: string;
 };
 
 const initialState: ICharacterFav[] = [];
@@ -11,18 +11,17 @@ const characterSlice = createSlice({
     name: "character",
     initialState,
     reducers: {
-        setCharacterFav: (state, {payload}) => {
-            const { id, name } = payload;//incoming state
+        setCharacterFav: (state, action:PayloadAction<ICharacterFav>) => {
             const isFavAlready = state.find(
-                (set) => set.id === id && set.name === name,
+                (set) => set.id === action.payload.id
+                    && set.name === action.payload.name
             );
             if (isFavAlready) return state;
-            return [...state, { id, name }];
+            return [...state, { id: action.payload.id, name: action.payload.name }];
         },
-        removeCharacterFav: (state, { payload }) => {
-            const { id, name } = payload;
+        removeCharacterFav: (state,action ) => {
             return state.filter(
-                (state)=> state.name !== name || state.id !== id,
+                (state)=> state.name !== action.payload.name || state.id !== action.payload.id,
             )
         }
     }

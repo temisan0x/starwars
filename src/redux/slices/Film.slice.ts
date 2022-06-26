@@ -13,7 +13,8 @@ const filmSlice = createSlice({
     reducers: {
         setFilmFav: (state,action: PayloadAction<IFilmFav>) => {
             const isFavAlready = state.find(
-                (set) => set.id === action.payload.id && set.title === action.payload.title);
+                (set) => set.id === action.payload.id
+                    && set.title === action.payload.title);
             
                 if (isFavAlready) return state;
                 return [...state, {id: action.payload.id, title: action.payload.title}]
