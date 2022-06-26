@@ -8,7 +8,7 @@ interface IStarship {
 const initialState: IStarship[] = [];
 
 const starshipSlice = createSlice({
-    name: 'starship',
+    name: 'starships',
     initialState,
     reducers: {
         setStarshipFav: (state, action: PayloadAction<IStarship>) => {

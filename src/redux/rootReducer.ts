@@ -1,15 +1,15 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import characters from './slices/Character.slice';
-import film from './slices/Film.slice';
-import starship from './slices/Starship.slice';
-import vehicle from './slices/Vehicle.slice';
+import films from './slices/Film.slice';
+import starships from './slices/Starship.slice';
+import vehicles from './slices/Vehicle.slice';
 import planets from './slices/Planet.slice';
 
 const rootReducer = combineReducers({
     characters,
-    film,
-    starship,
-    vehicle,
+    films,
+    starships,
+    vehicles,
     planets
 })
 

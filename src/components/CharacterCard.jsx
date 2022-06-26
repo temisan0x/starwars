@@ -7,6 +7,13 @@ import { setPlanetFav, removePlanetFav } from '../redux/slices/Planet.slice';
 import { setVehicleFav, removeVehicleFav } from '../redux/slices/Vehicle.slice';
 import { setStarshipFav, removeStarshipFav } from '../redux/slices/Starship.slice';
 
+interface ICardProps {
+    ImageUrl: string;
+    id: string;
+    type: 'characters' | 'film'| 'starships' | 'vehicles' | 'planet';
+
+}
+
 const CharacterCard = () => {
     return (
         <div>CharacterCard</div>
