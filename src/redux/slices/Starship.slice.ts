@@ -7,7 +7,7 @@ interface IStarship {
 
 const initialState: IStarship[] = [];
 
-const starship = createSlice({
+const starshipSlice = createSlice({
     name: 'starship',
     initialState,
     reducers: {
@@ -22,5 +22,5 @@ const starship = createSlice({
     }
 });
 
-export default starship.reducer;
-export const {setStarshipFav, removeStarshipFav} = starship.actions
+export default starshipSlice.reducer;
+export const {setStarshipFav, removeStarshipFav} = starshipSlice.actions

@@ -7,7 +7,7 @@ interface IPlanets {
 
 const initialState: IPlanets[] = [];
 
-const planets = createSlice({
+const planetSlice = createSlice({
     name: 'planets',
     initialState,
     reducers: {
@@ -20,5 +20,5 @@ const planets = createSlice({
     }
 });
 
-export default planets.reducer;
-export const {setPlanetFav, removePlanetFav} = planets.actions
+export default planetSlice.reducer;
+export const {setPlanetFav, removePlanetFav} = planetSlice.actions
