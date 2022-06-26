@@ -21,11 +21,6 @@ type Starship = {
     url: string;
 };
 
-type Species = {
-    name: string;
-    url: string;
-};
-
 type HomeWorld = {
     name: string;
     url: string;
@@ -37,7 +32,6 @@ export function useCharacter(data: Character | undefined) {
     const [planets, setPlanets] = useState<Planet[]>([]);
     const [vehicles, setVehicles] = useState<Vehicle[]>([]);
     const [starships, setStarships] = useState<Starship[]>([]);
-    const [species, setSpecies] = useState<Species[]>([]);
     const [homeworld, setHomeworld] = useState<HomeWorld>({
         name: "",
         url: "",
@@ -127,26 +121,6 @@ export function useCharacter(data: Character | undefined) {
         }
     }, [data?.starships]);
 
-    const getSpecies = useCallback(async () => {
-        try {
-            data?.species.forEach(async (species) => {
-                const response = await fetch(species);
-                const speciesData = await response.json();
-                
-                setSpecies((prevState) => {
-                    if (prevState.includes(speciesData.name)) return prevState;
-                    return [...prevState, {
-                        name: speciesData.name,
-                        url: speciesData.url,
-                    }]
-                })
-            })
-        } catch {
-        } finally {
-            setLoading(false);
-        }
-    }, [data?.species]);
-
     const getHomeWorld = useCallback(async () => {
         try {
             if (!data?.homeworld) return;
@@ -181,10 +155,6 @@ export function useCharacter(data: Character | undefined) {
     }, [getStarShip]);
 
     useEffect(() => {
-        getSpecies()
-    }, [getSpecies]);
-
-    useEffect(() => {
         getHomeWorld()
     }, [getHomeWorld]);
 
@@ -194,7 +164,6 @@ export function useCharacter(data: Character | undefined) {
         planets,
         films,
         starships,
-        vehicles,
-        species
+        vehicles
     };
 }
