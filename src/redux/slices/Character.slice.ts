@@ -21,7 +21,7 @@ const characterSlice = createSlice({
         },
         removeCharacterFav: (state,action ) => {
             return state.filter(
-                (state)=> state.name !== action.payload.name || state.id !== action.payload.id,
+                (set)=> set.name !== action.payload.name || set.id !== action.payload.id,
             )
         }
     }

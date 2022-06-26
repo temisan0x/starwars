@@ -19,7 +19,7 @@ const filmSlice = createSlice({
             return [...state, { id:action.payload.id, title:action.payload.title }]
         },
         removeFilmFav: (state, action: PayloadAction<IFilmFav>) => {
-            return state.filter((film) => film.title !== action.payload.title || film.id !== action.payload.title);
+            return state.filter((set) => set.title !== action.payload.title || set.id !== action.payload.title);
         }
     }
 });
