@@ -13,7 +13,7 @@ export default function Home() {
     const [isFavSelected, setIsFavSelected] = useState<boolean>(false)
 
     const favCharacters = useSelector(
-        // (state: RootState) => state.character,
+        (state: RootState) => state.characters,
     );
 
     const getData = useCallback(async () => {

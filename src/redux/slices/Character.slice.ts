@@ -8,7 +8,7 @@ export interface ICharacterFav {
 const initialState: ICharacterFav[] = [];
 
 const characterSlice = createSlice({
-    name: "character",
+    name: "characters",
     initialState,
     reducers: {
         setCharacterFav: (state, action:PayloadAction<ICharacterFav>) => {
