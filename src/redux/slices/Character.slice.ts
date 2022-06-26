@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface ICharacterFav {
     id: string
     name: string
-}
+};
+
 
 const characterSlice = createSlice({
     name: "character",
