@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface IVehicle {
-    id: number;
+    id: string;
     name: string;
 }
 
