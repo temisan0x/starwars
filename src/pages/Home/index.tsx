@@ -66,6 +66,12 @@ export default function Home() {
                                 )}
                             />
                         ))}
+
+                        {favCharacters.length === 0 && (
+                            <div>
+                                <span>no fav</span>
+                            </div>
+                        )}
                     </div>
                 )
             }

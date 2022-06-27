@@ -1,13 +1,16 @@
-import './App.css';
-import Home from './pages/Home';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/Home";
 // import Palindrome from './practice/Palindrome';
 // import CharactersPage from './pages/CharactersPage';
 
 function App() {
   return (
-    <div className="App">
-      <Home/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
