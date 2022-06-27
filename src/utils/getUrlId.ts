@@ -1,4 +1,4 @@
-export function getUrldId(url: string) {
+export function getUrlId(url: string) {
     const splitUrl = url.split('/');
     const characterId = splitUrl[splitUrl.length - 2];
 

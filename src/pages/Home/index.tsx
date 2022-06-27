@@ -5,6 +5,7 @@ import CharacterCard from '../../components/CharacterCard';
 import { RootState } from "../../redux/rootReducer";
 import { Character } from "../../types/Characte.type";
 import { CharacterDataTypes } from '../../types/CharacterDataTypes';
+import { getUrlId } from "../../utils/getUrlId";
 
 export default function Home() {
     const [data, setData] = useState<CharacterDataTypes>();
