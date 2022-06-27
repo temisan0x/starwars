@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { swapi } from "../../api/api";
 import CharacterCard from '../../components/CharacterCard';
 import { RootState } from "../../redux/rootReducer";
-import { Character } from "../../types/Characte.type";
+import { ICharacterFav } from '../../redux/slices/Character.slice';
+import { Character } from "../../types/Character.type";
 import { CharacterDataTypes } from '../../types/CharacterDataTypes';
 import { getUrlId } from "../../utils/getUrlId";
 
@@ -14,6 +15,7 @@ export default function Home() {
     const [loading, setLoading] = useState<boolean>(true);
     const [isFavSelected, setIsFavSelected] = useState<boolean>(false)
 
+        //passed characters from Character reducer
     const favCharacters = useSelector(
         (state: RootState) => state.characters,
     );
@@ -24,9 +26,7 @@ export default function Home() {
             const fetchedData = await response.data;
             setData(fetchedData);
             setCharacters(fetchedData.results);
-
-        } catch (error) {
-            console.error(error)
+        } catch {
         } finally {
             setLoading(false)
         }
@@ -39,21 +39,36 @@ export default function Home() {
 
     return (
         <div>
-            {loading ? <div>loading</div> :
-                <div>
+            {loading ? (<div>loading</div>) : !isFavSelected ?
+                (<div>
                     {characters.map((character) => (
                         <CharacterCard
-                        ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
-                            character.url,
-                        )}.jpg`}
-                        name={character.name}
-                        id={character.url}
-                        type="characters"
+                            ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
+                                character.url,
+                            )}.jpg`}
+                            name={character.name}
+                            id={character.url}
+                            type="characters"
                             isFavorited={favCharacters.some(
-                            (favorite)=>favorite.name === character.name
-                        )} />
+                                (favorite) => favorite.name === character.name
+                            )} />
                     ))}
-                </div>}
+                </div>) : (
+                    <div>
+                        {favCharacters.length === 0 && favCharacters.map((character: ICharacterFav) => (
+                            <CharacterCard
+                                ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${character.id}.jpg`}
+                                name={character.name}
+                                id={character.id}
+                                type="characters"
+                                isFavorited={favCharacters.some(
+                                    (favorite)=> favorite.name === character.name
+                                )}
+                            />
+                        ))}
+                    </div>
+                )
+            }
         </div>
     )
 }

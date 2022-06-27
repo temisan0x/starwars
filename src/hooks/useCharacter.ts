@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Character } from "../types/Characte.type";
+import { Character } from "../types/Character.type";
 
 type Film = {
     title: string;

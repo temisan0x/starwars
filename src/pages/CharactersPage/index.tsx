@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useCharacter } from "../../hooks/useCharacter";
 import {swapi} from '../../api/api'
-import { Character } from "../../types/Characte.type";
+import { Character } from "../../types/Character.type";
 
 const CharactersPage = () => {
     const [data, setData] = useState<Character>();

@@ -1,4 +1,4 @@
-import { Character } from './Characte.type';
+import { Character } from './Character.type';
 
 export interface CharacterDataTypes {
     count: number;
