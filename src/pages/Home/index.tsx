@@ -50,9 +50,13 @@ export default function Home() {
 
     useEffect(() => {
         setLoading(true);
-        getFilteredData()
         getData()
-    }, [getData,getFilteredData]);
+    }, [getData]);
+    
+    useEffect(() => {
+        setLoading(true);
+        getFilteredData()
+    }, [getFilteredData]);
 
     function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
         setInputSearch(event.target.value)
@@ -77,9 +81,10 @@ export default function Home() {
             <div>
                 {loading ? (<div>loading</div>) : !isFavSelected ?
                     (<div>
-                        {characters.map((character, index) => (
-                            <div key={index}>
+                        {characters.map((character) => (
+                            <div>
                                 <CharacterCard
+                                    key={character.name}
                                     ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
                                         character.url,
                                     )}.jpg`}
@@ -93,16 +98,15 @@ export default function Home() {
                         ))}
                     </div>) : (
                         <div>
-                            {favCharacters.length === 0 && favCharacters.map((character: ICharacterFav, index) => (
-                                <div key={index}>
+                            {favCharacters.length === 0 && favCharacters.map((character: ICharacterFav) => (
+                                <div>
                                     <CharacterCard
+                                        key={character.name}
                                         ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${character.id}.jpg`}
                                         name={character.name}
                                         id={character.id}
                                         type="characters"
-                                        isFavorited={favCharacters.some(
-                                            (favorite) => favorite.name === character.name
-                                        )}
+                                        isFavorited
                                     />
                                 </div>
                             ))}
