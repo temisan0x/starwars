@@ -19,11 +19,11 @@ const vehicleSlice = createSlice({
             if (isFavAlready) return state;
             return [...state, {id: action.payload.id, name: action.payload.name}];
         },
-        removeVehicle: (state, action: PayloadAction<IVehicle>) => { 
+        removeVehicleFav: (state, action: PayloadAction<IVehicle>) => { 
             return state.filter((set) => set.id !== action.payload.id || set.name !== action.payload.name);
         }
     }
 })
 
 export default vehicleSlice.reducer;
-export const { setVehicleFav, removeVehicle } = vehicleSlice.actions
+export const { setVehicleFav, removeVehicleFav } = vehicleSlice.actions

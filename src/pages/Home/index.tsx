@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { swapi } from "../../api/api";
+import CharacterCard from '../../components/CharacterCard';
 import { RootState } from "../../redux/rootReducer";
 import { Character } from "../../types/Characte.type";
 import { CharacterDataTypes } from '../../types/CharacterDataTypes';
@@ -39,7 +40,18 @@ export default function Home() {
         <div>
             {loading ? <div>loading</div> :
                 <div>
-                    {data?.count}
+                    {characters.map((character) => (
+                        <CharacterCard
+                        ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
+                            character.url,
+                        )}.jpg`}
+                        name={character.name}
+                        id={character.url}
+                        type="characters"
+                            isFavorited={favCharacters.some(
+                            (favorite)=>favorite.name === character.name
+                        )} />
+                    ))}
                 </div>}
         </div>
     )
