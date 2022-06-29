@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { swapi } from "../../api/api";
-import CharacterCard from '../../components/CharacterCard';
+import {Card, PaginationBtn} from '../../components/index';
 import { RootState } from "../../redux/rootReducer";
 import { ICharacterFav } from '../../redux/slices/Character.slice';
 import { Character } from "../../types/Character.type";
@@ -96,12 +96,25 @@ export default function Home() {
                     none selected
                 </button>
             </div>
+            
+            {pages < 3 ? (
+                <>
+                    <PaginationBtn isActive={pages === 1} onClick={() => setPages(1)} number={1} />
+                    <PaginationBtn isActive={pages === 2} onClick={() => setPages(2)} number={2} />
+                    <PaginationBtn isActive={pages === 3} onClick={() => setPages(3)} number={3} />
+                </>
+            ) : <>
+                    <PaginationBtn onClick={() => setPages(pages - 1)} number={pages - 1} />
+
+                </>
+            }
+
             <div>
                 {loading ? (<div>loading</div>) : !isFavSelected ?
                     (<div>
                         {characters.map((character) => (
                             <div>
-                                <CharacterCard
+                                <Card
                                     key={character.name}
                                     ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
                                         character.url,
@@ -118,7 +131,7 @@ export default function Home() {
                         <div>
                             {favCharacters.length > 0 && favCharacters.map((character: ICharacterFav) => (
                                 <div>
-                                    <CharacterCard
+                                    <Card
                                         key={character.name}           
                                         ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
                                         character.id,
