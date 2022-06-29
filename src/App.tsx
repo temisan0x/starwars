@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
-// import Palindrome from './practice/Palindrome';
+//import { Palindrome } from "./practice/Palindrome";
 // import CharactersPage from './pages/CharactersPage';
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
       </Routes>
+      
     </BrowserRouter>
   );
 }

@@ -64,7 +64,7 @@ const CharacterCard = ({ ImageUrl,name, id, type, isFavorited }: ICardProps) => 
             <button type='button' onClick={() => handleFavourite()}>
                 {!isFavorite ? <MdStarBorder size={32} /> : <MdStar size={32}/>}
             </button>
-            <img src={ImageUrl} alt="" />
+            <img src={ImageUrl} alt={`images ${name}`} />
             <Link to={`/${type}/${id}`}>
                 <span>{name}</span>
             </Link>

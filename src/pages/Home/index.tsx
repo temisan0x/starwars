@@ -7,7 +7,8 @@ import { ICharacterFav } from '../../redux/slices/Character.slice';
 import { Character } from "../../types/Character.type";
 import { CharacterDataTypes } from '../../types/CharacterDataTypes';
 import { getUrlId } from "../../utils/getUrlId";
-import { debounce } from "lodash"
+import { debounce } from "lodash";
+import './styles.css'
 
 export default function Home() {
     const [data, setData] = useState<CharacterDataTypes>();
@@ -15,11 +16,11 @@ export default function Home() {
     const [inputSearch, setInputSearch] = useState<string>('')
     const [pages, setPages] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(true);
-    const [isFavSelected, setIsFavSelected] = useState<boolean>(false)
+    const [isFavSelected, setIsFavSelected] = useState<boolean>(false);
 
     //passed characters from Character reducer
     const favCharacters = useSelector(
-        (state: RootState) => state.characters,
+        (state: RootState) => state.characters
     );
 
     const getData = useCallback(async () => {
@@ -52,7 +53,7 @@ export default function Home() {
         setLoading(true);
         getData()
     }, [getData]);
-    
+
     useEffect(() => {
         setLoading(true);
         getFilteredData()
@@ -79,6 +80,23 @@ export default function Home() {
                 )}
             </div>
             <div>
+                <button
+                    className="selectedBtn"
+                    type="button"
+                    style={{borderBottom: isFavSelected === false ? '2px solid yellow' : '2px solid grey', padding: '5px'}}
+                    onClick={() => setIsFavSelected(false)}>
+                    selected
+                </button>
+                <button
+                    className="selectedBtn"
+                    type="button"
+                    onClick={() => setIsFavSelected(true)}
+                    style={{borderBottom: isFavSelected === true ? '2px solid red' : ' 2px solid black', padding: '5px' }}
+                > 
+                    none selected
+                </button>
+            </div>
+            <div>
                 {loading ? (<div>loading</div>) : !isFavSelected ?
                     (<div>
                         {characters.map((character) => (
@@ -98,11 +116,13 @@ export default function Home() {
                         ))}
                     </div>) : (
                         <div>
-                            {favCharacters.length === 0 && favCharacters.map((character: ICharacterFav) => (
+                            {favCharacters.length > 0 && favCharacters.map((character: ICharacterFav) => (
                                 <div>
                                     <CharacterCard
-                                        key={character.name}
-                                        ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${character.id}.jpg`}
+                                        key={character.name}           
+                                        ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
+                                        character.id,
+                                    )}.jpg`}
                                         name={character.name}
                                         id={character.id}
                                         type="characters"
