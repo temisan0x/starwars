@@ -99,13 +99,13 @@ export default function Home() {
             
             {pages < 3 ? (
                 <>
-                    <PaginationBtn isActive={pages === 1} onClick={() => setPages(1)} number={1} />
-                    <PaginationBtn isActive={pages === 2} onClick={() => setPages(2)} number={2} />
-                    <PaginationBtn isActive={pages === 3} onClick={() => setPages(3)} number={3} />
+                    <PaginationBtn isActive={pages === 1} onClick={() => setPages(1)}/>
+                    <PaginationBtn isActive={pages === 2} onClick={() => setPages(2)}/>
+                    <PaginationBtn isActive={pages === 3} onClick={() => setPages(3)}/>
                 </>
             ) : <>
-                    <PaginationBtn onClick={() => setPages(pages - 1)} number={pages - 1} />
-
+                    <PaginationBtn onClick={() => setPages(pages - 1)} />
+                    <PaginationBtn isActive/>
                 </>
             }
 
