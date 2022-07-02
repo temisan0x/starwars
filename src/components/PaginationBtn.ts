@@ -1,16 +1,32 @@
 import { transparentize } from 'polished';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface IPaginationBtnProps {
     isActive?: boolean;
 }
-const color = '#fdb810';
 
 export const PaginationBtn = styled.button<IPaginationBtnProps>`
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 4px;
     border: none;
-    background-color: ${transparentize(0.05, color)}
-    
+    background-color: ${({ theme }) => transparentize(0.8, theme.colors.light[300])};
+    color: ${({ theme }) => theme.colors.light[300]}}
+
+    &[disabled] {
+        background-color: ${({ theme }) => theme.colors.light[300]};
+        cursor: not-allowed;
+    }
+
+    svg {
+        text-align: center;
+    }
+
+
+${({ isActive }) => isActive && css`
+    background-color: ${({ theme }) => theme.colors.primary};
+    border-radius:50%;
+    font-weight:bold;
+`}
 `
+PaginationBtn.defaultProps = { isActive: false };

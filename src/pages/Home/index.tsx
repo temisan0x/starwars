@@ -8,7 +8,6 @@ import { Character } from "../../types/Character.type";
 import { CharacterDataTypes } from '../../types/CharacterDataTypes';
 import { getUrlId } from "../../utils/getUrlId";
 import { debounce } from "lodash";
-import './styles.css'
 
 export default function Home() {
     const [data, setData] = useState<CharacterDataTypes>();
