@@ -5,7 +5,7 @@ interface ISelectBtnProps {
 }
 
 export const SelectBtn = styled.button<ISelectBtnProps>`
-    background: ${({ theme }) => theme.colors.dark[900]};
+    background: ${({ theme }) => theme.colors.light[900]};
     border: none;
 
     ${({ theme, isSelected }) => isSelected && css`

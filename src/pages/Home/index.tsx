@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { swapi } from "../../api/api";
-import { Card, PaginationBtn } from '../../components/index';
+import { Card, PaginationBtn, SelectBtn } from '../../components/index';
 import { RootState } from "../../redux/rootReducer";
 import { ICharacterFav } from '../../redux/slices/Character.slice';
 import { Character } from "../../types/Character.type";
@@ -78,21 +78,15 @@ export default function Home() {
                     onChange={(event) => debounceOnChange(event)} />
             </div>
             <div>
-                <button
-                    className="selectedBtn"
-                    type="button"
-                    style={{ borderBottom: isFavSelected === false ? '2px solid yellow' : '2px solid grey', padding: '5px' }}
+                <SelectBtn isSelected={isFavSelected === false}
                     onClick={() => setIsFavSelected(false)}>
                     selected
-                </button>
-                <button
-                    className="selectedBtn"
-                    type="button"
+                </SelectBtn>
+                <SelectBtn isSelected={isFavSelected === true}
                     onClick={() => setIsFavSelected(true)}
-                    style={{ borderBottom: isFavSelected === true ? '2px solid red' : ' 2px solid black', padding: '5px' }}
                 >
                     none selected
-                </button>
+                </SelectBtn>
             </div>
             {pages < 3 ? (
                 <>
