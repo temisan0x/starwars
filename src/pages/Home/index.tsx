@@ -73,10 +73,18 @@ export default function Home() {
                 </h1>
             </div>
             <div>
-                <input type="text"
+                {!isFavSelected && (
+                    <input type="text"
                     placeholder="type something"
                     onChange={(event) => debounceOnChange(event)} />
+                )}
             </div>
+            {!inputSearch && !isFavSelected && (
+                pages === 1 ?
+                    <div /> : <PaginationBtn onClick={()=> setPages(pages + 1)}>
+                        <MdArrowForwardIos/>
+                    </PaginationBtn>
+            )}
             <div>
                 <SelectBtn isSelected={isFavSelected === false}
                     onClick={() => setIsFavSelected(false)}>
