@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { swapi } from "../../api/api";
-import {Card, PaginationBtn} from '../../components/index';
+import { Card, PaginationBtn } from '../../components/index';
 import { RootState } from "../../redux/rootReducer";
 import { ICharacterFav } from '../../redux/slices/Character.slice';
 import { Character } from "../../types/Character.type";
 import { CharacterDataTypes } from '../../types/CharacterDataTypes';
 import { getUrlId } from "../../utils/getUrlId";
 import { debounce } from "lodash";
+import { MdArrowForwardIos } from "react-icons/md";
 
 export default function Home() {
     const [data, setData] = useState<CharacterDataTypes>();
@@ -72,17 +73,15 @@ export default function Home() {
                 </h1>
             </div>
             <div>
-                {!isFavSelected && (
-                    <input type="text"
-                        placeholder="type something"
-                        onChange={(event) => debounceOnChange(event)} />
-                )}
+                <input type="text"
+                    placeholder="type something"
+                    onChange={(event) => debounceOnChange(event)} />
             </div>
             <div>
                 <button
                     className="selectedBtn"
                     type="button"
-                    style={{borderBottom: isFavSelected === false ? '2px solid yellow' : '2px solid grey', padding: '5px'}}
+                    style={{ borderBottom: isFavSelected === false ? '2px solid yellow' : '2px solid grey', padding: '5px' }}
                     onClick={() => setIsFavSelected(false)}>
                     selected
                 </button>
@@ -90,23 +89,33 @@ export default function Home() {
                     className="selectedBtn"
                     type="button"
                     onClick={() => setIsFavSelected(true)}
-                    style={{borderBottom: isFavSelected === true ? '2px solid red' : ' 2px solid black', padding: '5px' }}
-                > 
+                    style={{ borderBottom: isFavSelected === true ? '2px solid red' : ' 2px solid black', padding: '5px' }}
+                >
                     none selected
                 </button>
             </div>
-            
             {pages < 3 ? (
                 <>
-                    <PaginationBtn isActive={pages === 1} onClick={() => setPages(1)}/>
-                    <PaginationBtn isActive={pages === 2} onClick={() => setPages(2)}/>
-                    <PaginationBtn isActive={pages === 3} onClick={() => setPages(3)}/>
+                    <PaginationBtn isActive={pages === 1} onClick={() => setPages(1)}>1</PaginationBtn>
+                    <PaginationBtn isActive={pages === 2} onClick={() => setPages(2)}>2</PaginationBtn>
+                    <PaginationBtn isActive={pages === 3} onClick={() => setPages(3)}>3</PaginationBtn>
                 </>
             ) : <>
-                    <PaginationBtn onClick={() => setPages(pages - 1)} />
-                    <PaginationBtn isActive/>
-                </>
+                <PaginationBtn onClick={() => setPages(pages - 1)} >{pages - 1}</PaginationBtn>
+                <PaginationBtn isActive>{pages}</PaginationBtn>
+                {data?.next && (
+                    <PaginationBtn onClick={() => setPages(pages + 1)} >{pages + 1}</PaginationBtn>
+                )}
+            </>
             }
+
+            {!data?.next ? (
+                <div></div>
+            ) : (
+                <PaginationBtn onClick={() => setPages(pages + 1)}>
+                    <MdArrowForwardIos />
+                </PaginationBtn>
+            )}
 
             <div>
                 {loading ? (<div>loading</div>) : !isFavSelected ?
@@ -131,10 +140,10 @@ export default function Home() {
                             {favCharacters.length > 0 && favCharacters.map((character: ICharacterFav) => (
                                 <div>
                                     <Card
-                                        key={character.name}           
+                                        key={character.name}
                                         ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
-                                        character.id,
-                                    )}.jpg`}
+                                            character.id,
+                                        )}.jpg`}
                                         name={character.name}
                                         id={character.id}
                                         type="characters"
