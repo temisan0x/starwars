@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme/colors";
+import { GlobalStyles } from "./styles/global";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -14,7 +15,8 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <App />
+        <GlobalStyles/>
+          <App />
       </ThemeProvider>
     </Provider>
   </React.StrictMode>

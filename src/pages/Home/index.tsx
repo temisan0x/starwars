@@ -9,7 +9,6 @@ import { CharacterDataTypes } from '../../types/CharacterDataTypes';
 import { getUrlId } from "../../utils/getUrlId";
 import { debounce } from "lodash";
 import { MdArrowForwardIos } from "react-icons/md";
-
 export default function Home() {
     const [data, setData] = useState<CharacterDataTypes>();
     const [characters, setCharacters] = useState<Character[]>([]);
