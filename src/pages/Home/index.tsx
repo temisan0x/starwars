@@ -8,7 +8,7 @@ import { Character } from "../../types/Character.type";
 import { CharacterDataTypes } from '../../types/CharacterDataTypes';
 import { getUrlId } from "../../utils/getUrlId";
 import { debounce } from "lodash";
-import { MdArrowForwardIos } from "react-icons/md";
+import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { Container } from "./styles";
 import { InputSearch } from "../../components/InputSearch";
 
@@ -75,57 +75,73 @@ export default function Home() {
                     <span>Star Wars</span>
                 </h1>
             </div>
-            <div>
+            <div className="header">
                 {!isFavSelected && (
                     <InputSearch
-                    placeholder="type something"
-                    onChange={(event) => debounceOnChange(event)} />
+                        type="text"
+                        placeholder="type something"
+                        onChange={(event) => debounceOnChange(event)} />
+                )}
+                <div className="select">
+                    <SelectBtn
+                        type="button"
+                        isSelected={isFavSelected === false}
+                        onClick={() => setIsFavSelected(false)}>
+                        selected
+                    </SelectBtn>
+                    <SelectBtn
+                        type="button"
+                        isSelected={isFavSelected === true}
+                        onClick={() => setIsFavSelected(true)}
+                    >
+                        none selected
+                    </SelectBtn>
+                </div>
+
+                {!inputSearch && !isFavSelected && (
+                    <div className="pagination">
+                        {pages === 1 ?
+                            (<div />) :
+                            (
+                                <PaginationBtn
+                                    onClick={() => setPages(pages + 1)}>
+                                    <MdArrowBackIosNew />
+                                </PaginationBtn>
+                            )}
+                        {pages < 3 ? (
+                            <>
+                                <PaginationBtn
+                                    isActive={pages === 1}
+                                    onClick={() => setPages(1)}>1</PaginationBtn>
+                                <PaginationBtn
+                                    isActive={pages === 2}
+                                    onClick={() => setPages(2)}>2</PaginationBtn>
+                                <PaginationBtn
+                                    isActive={pages === 3}
+                                    onClick={() => setPages(3)}>3</PaginationBtn>
+                            </>
+                        ) : (
+                            <>
+                                <PaginationBtn onClick={() => setPages(pages - 1)} >{pages - 1}</PaginationBtn>
+                                <PaginationBtn isActive>{pages}</PaginationBtn>
+                                {data?.next && (
+                                    <PaginationBtn onClick={() => setPages(pages + 1)} >{pages + 1}</PaginationBtn>
+                                )}
+                            </>
+                        )
+                        }
+                        {!data?.next ? (
+                            <div />
+                        ) : (
+                            <PaginationBtn onClick={() => setPages(pages + 1)}>
+                                <MdArrowForwardIos />
+                            </PaginationBtn>
+                        )}
+                    </div>
                 )}
             </div>
-            {!inputSearch && !isFavSelected && (
-                pages === 1 ?
-                    (<div />) :
-                    (
-                        <PaginationBtn onClick={() => setPages(pages + 1)}>
-                            <MdArrowForwardIos/>
-                        </PaginationBtn>
-                    )
-            )}
-            <div>
-                <SelectBtn isSelected={isFavSelected === false}
-                    onClick={() => setIsFavSelected(false)}>
-                    selected
-                </SelectBtn>
-                <SelectBtn isSelected={isFavSelected === true}
-                    onClick={() => setIsFavSelected(true)}
-                >
-                    none selected
-                </SelectBtn>
-            </div>
-            {pages < 3 ? (
-                <>
-                    <PaginationBtn isActive={pages === 1} onClick={() => setPages(1)}>1</PaginationBtn>
-                    <PaginationBtn isActive={pages === 2} onClick={() => setPages(2)}>2</PaginationBtn>
-                    <PaginationBtn isActive={pages === 3} onClick={() => setPages(3)}>3</PaginationBtn>
-                </>
-            ) : <>
-                <PaginationBtn onClick={() => setPages(pages - 1)} >{pages - 1}</PaginationBtn>
-                <PaginationBtn isActive>{pages}</PaginationBtn>
-                {data?.next && (
-                    <PaginationBtn onClick={() => setPages(pages + 1)} >{pages + 1}</PaginationBtn>
-                )}
-            </>
-            }
 
-            {!data?.next ? (
-                <div/>
-            ) : (
-                <PaginationBtn onClick={() => setPages(pages + 1)}>
-                    <MdArrowForwardIos />
-                </PaginationBtn>
-            )}
-
-            <div>
+            <div className="loading">
                 {loading ? (<div>loading</div>) : !isFavSelected ?
                     (<div>
                         {characters.map((character) => (
