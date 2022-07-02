@@ -9,6 +9,9 @@ import { CharacterDataTypes } from '../../types/CharacterDataTypes';
 import { getUrlId } from "../../utils/getUrlId";
 import { debounce } from "lodash";
 import { MdArrowForwardIos } from "react-icons/md";
+import { Container } from "./styles";
+import { InputSearch } from "../../components/InputSearch";
+
 export default function Home() {
     const [data, setData] = useState<CharacterDataTypes>();
     const [characters, setCharacters] = useState<Character[]>([]);
@@ -65,24 +68,28 @@ export default function Home() {
     const debounceOnChange = debounce(handleInputChange, 500);
 
     return (
-        <>
+        <Container>
             <div className="title">
                 <h1>
+                    Name - {''}
                     <span>Star Wars</span>
                 </h1>
             </div>
             <div>
                 {!isFavSelected && (
-                    <input type="text"
+                    <InputSearch
                     placeholder="type something"
                     onChange={(event) => debounceOnChange(event)} />
                 )}
             </div>
             {!inputSearch && !isFavSelected && (
                 pages === 1 ?
-                    <div /> : <PaginationBtn onClick={()=> setPages(pages + 1)}>
-                        <MdArrowForwardIos/>
-                    </PaginationBtn>
+                    (<div />) :
+                    (
+                        <PaginationBtn onClick={() => setPages(pages + 1)}>
+                            <MdArrowForwardIos/>
+                        </PaginationBtn>
+                    )
             )}
             <div>
                 <SelectBtn isSelected={isFavSelected === false}
@@ -111,7 +118,7 @@ export default function Home() {
             }
 
             {!data?.next ? (
-                <div></div>
+                <div/>
             ) : (
                 <PaginationBtn onClick={() => setPages(pages + 1)}>
                     <MdArrowForwardIos />
@@ -162,6 +169,6 @@ export default function Home() {
                     )
                 }
             </div>
-        </>
+        </Container>
     )
 }
