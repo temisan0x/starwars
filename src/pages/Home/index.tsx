@@ -11,6 +11,7 @@ import { debounce } from "lodash";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { Container } from "./styles";
 import { InputSearch } from "../../components/InputSearch";
+import { Loading } from "../../components/Loading";
 
 export default function Home() {
     const [data, setData] = useState<CharacterDataTypes>();
@@ -142,7 +143,7 @@ export default function Home() {
             </div>
 
             <div className="loading">
-                {loading ? (<div>loading</div>) : !isFavSelected ?
+                {loading ? (<div className="loading"><Loading/></div>) : !isFavSelected ?
                     (<div>
                         {characters.map((character) => (
                             <div>

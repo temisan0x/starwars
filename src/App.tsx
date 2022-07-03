@@ -9,7 +9,6 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
       </Routes>
-      
     </BrowserRouter>
   );
 }

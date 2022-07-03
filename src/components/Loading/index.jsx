@@ -12,7 +12,6 @@ const loadingOptions = {
 };
 
 
-
 export const Loading = () => {
 
     return (
