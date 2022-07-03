@@ -43,4 +43,16 @@ export const Container = styled.div`
         }
     }
 
+    .loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2rem;
+
+        >div {
+            font-size: 2rem;
+        }
+    }
+
 `

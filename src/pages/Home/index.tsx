@@ -142,8 +142,13 @@ export default function Home() {
                 )}
             </div>
 
-            <div className="loading">
-                {loading ? (<div className="loading"><Loading/></div>) : !isFavSelected ?
+            <div>
+                {loading ? (
+                    <div className="loading">
+                        <Loading />
+                        <div>Fetching Data...</div>
+                    </div>
+                ) : !isFavSelected ?
                     (<div>
                         {characters.map((character) => (
                             <div>

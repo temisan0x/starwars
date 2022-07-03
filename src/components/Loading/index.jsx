@@ -15,14 +15,12 @@ const loadingOptions = {
 export const Loading = () => {
 
     return (
-        <div>
-            <Lottie
-                options={loadingOptions}
-                width={300}
-                height={300}
-                isStopped={false}
-                isPaused={false}
-            />
-        </div>
+        <Lottie
+            options={loadingOptions}
+            width={300}
+            height={300}
+            isStopped={false}
+            isPaused={false}
+        />
     )
 }
