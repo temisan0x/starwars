@@ -22,13 +22,32 @@ export const Container = styled.header`
         display:flex;
         justify-content: space-between;
         align-items: center;
-        transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in;
         margin-right:30px;
         color:white;
         text-decoration:none;
         
         &:hover {
-            color: ${({theme})=> transparentize(0.8, theme.colors.primary.light)}
+            color: ${({ theme }) => transparentize(0, theme.colors.primary.light)}
+        }
+    }
+
+    @media screen and (max-width:480px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        nav{
+            flex-direction: column;
+            justify-content: center !important;
+
+            a  + a {
+                margin-left:0 !important;
+            }
+        }
+
+        a {
+            width: 100%;
+            margin-bottom: 1.5rem;
         }
     }
 `
