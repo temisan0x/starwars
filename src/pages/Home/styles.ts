@@ -1,4 +1,4 @@
-import styled  from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
     .title {
@@ -22,7 +22,7 @@ export const Container = styled.div`
                 width: 100%;
                 left: 0;
                 height:4px;
-                background-color: ${({ theme})=> theme.colors.primary.main}
+                background-color: ${({ theme }) => theme.colors.primary.main}
             }
         }
     }
@@ -46,6 +46,19 @@ export const Container = styled.div`
 
             button + button {
                 margin-left: 1rem;
+            }
+        }
+
+        @media screen and (max-width:480px) {
+            flex-direction: column;
+            justify-content:center;
+
+            .select {
+                margin-top:1rem;
+            }
+
+            .pagination{
+                margin-top:1rem;
             }
         }
     }
