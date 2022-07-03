@@ -5,11 +5,14 @@ interface ISelectBtnProps {
 }
 
 export const SelectBtn = styled.button<ISelectBtnProps>`
+    color: ${({ theme }) => theme.colors.light[900]};
+    outline: none;
     background: transparent;
-    color: ${({ theme }) => theme.colors.light[900]}
-    border: none;
+    border: 0;
+    padding: 5px;
+    font-size: 17px;
 
     ${({ theme, isSelected }) => isSelected && css`
-        border-bottom: 1px solid ${theme.colors.primary.main};
+        border-bottom: 2px solid ${theme.colors.primary.main};
     `}
 `;
