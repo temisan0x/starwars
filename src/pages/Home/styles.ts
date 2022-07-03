@@ -5,6 +5,11 @@ export const Container = styled.div`
         margin-bottom: 2rem;
         padding: 0 1rem;
 
+        @media screen and (max-width:480px) { 
+            h1 {
+                font-size: 20px;
+            }
+        }
     
         span {
             position: relative;
@@ -12,7 +17,9 @@ export const Container = styled.div`
             
             &::after {
                 content: "";
+                position: absolute;
                 bottom: -2px;
+                width: 100%;
                 left: 0;
                 height:4px;
                 background-color: ${({ theme})=> theme.colors.primary.main}
@@ -55,4 +62,26 @@ export const Container = styled.div`
         }
     }
 
+    .cards {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+
+        >div {
+            margin:1rem;
+        }
+
+        @media screen and (max-width:480px){
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            > div {
+                margin: 1rem 0;
+            }
+        }
+
+    }
 `

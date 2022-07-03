@@ -149,7 +149,7 @@ export default function Home() {
                         <div>Fetching Data...</div>
                     </div>
                 ) : !isFavSelected ?
-                    (<div>
+                    (<div className="cards">
                         {characters.map((character) => (
                             <div>
                                 <Card
@@ -166,7 +166,7 @@ export default function Home() {
                             </div>
                         ))}
                     </div>) : (
-                        <div>
+                        <div className="cards">
                             {favCharacters.length > 0 && favCharacters.map((character: ICharacterFav) => (
                                 <div>
                                     <Card
