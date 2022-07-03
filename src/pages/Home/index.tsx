@@ -104,7 +104,7 @@ export default function Home() {
                             (<div />) :
                             (
                                 <PaginationBtn
-                                    onClick={() => setPages(pages + 1)}>
+                                    onClick={() => setPages(pages - 1)}>
                                     <MdArrowBackIosNew />
                                 </PaginationBtn>
                             )}
