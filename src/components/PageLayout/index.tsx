@@ -1,7 +1,12 @@
-import React from 'react'
+import React from 'react';
+import {Outlet} from 'react-router-dom'
+import { Header } from '..'
 
 export const PageLayout = () => {
     return (
-        <div>PageLayout</div>
+        <>
+            <Header />
+            <Outlet/>
+        </>
     )
 }
