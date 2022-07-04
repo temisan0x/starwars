@@ -10,8 +10,8 @@ export const PaginationBtn = styled.button<IPaginationBtnProps>`
     height: 2.5rem;
     border-radius: 4px;
     border: none;
-    background-color: ${({ theme }) => transparentize(0.8, theme.colors.secondary.dark)};
-    color: ${({ theme }) => theme.colors.light[300]}}
+    background-color: ${({ theme }) => theme.colors.primary.dark};
+    color: ${({ theme }) => theme.colors.dark[900]}
 
     &[disabled] {
         background-color: ${({ theme }) => theme.colors.light[300]};
@@ -24,7 +24,7 @@ export const PaginationBtn = styled.button<IPaginationBtnProps>`
 
 
 ${({ isActive }) => isActive && css`
-    background-color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.primary.light};
     border-radius:50%;
     font-weight:bold;
 `}
