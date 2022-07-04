@@ -5,7 +5,8 @@ export const Footer = () => {
     return (
         <Container>
             <p>
-                Created by {''} <a href="https://github.com/">Temisan</a><br />
+                May the force be with you.<br />
+                Created by {''} <a href="https://github.com/">Temisan</a>
             </p>
         </Container>
     )

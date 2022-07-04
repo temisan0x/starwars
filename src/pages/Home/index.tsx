@@ -88,14 +88,14 @@ export default function Home() {
                         type="button"
                         isSelected={isFavSelected === false}
                         onClick={() => setIsFavSelected(false)}>
-                        selected
+                        characters
                     </SelectBtn>
                     <SelectBtn
                         type="button"
                         isSelected={isFavSelected === true}
                         onClick={() => setIsFavSelected(true)}
                     >
-                        none selected
+                        favourite character(s)
                     </SelectBtn>
                 </div>
 

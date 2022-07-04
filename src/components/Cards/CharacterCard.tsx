@@ -2,22 +2,23 @@ import React, { useState } from 'react';
 import { MdStarBorder, MdStar } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setCharacterFav, removeCharacterFav } from '../../redux/slices/Character.slice'; 
+import { setCharacterFav, removeCharacterFav } from '../../redux/slices/Character.slice';
 import { setFilmFav, removeFilmFav } from '../../redux/slices/Film.slice';
 import { setPlanetFav, removePlanetFav } from '../../redux/slices/Planet.slice';
 import { removeVehicleFav, setVehicleFav, } from '../../redux/slices/Vehicle.slice';
 import { setStarshipFav, removeStarshipFav } from '../../redux/slices/Starship.slice';
+import { Container } from './style';
 
 interface ICardProps {
     ImageUrl: string;
     name: string
     id: string;
-    type: 'characters' | 'films'| 'starships' | 'vehicles' | 'planets';
+    type: 'characters' | 'films' | 'starships' | 'vehicles' | 'planets';
     isFavorited: boolean;
 }
 
-const CharacterCard = ({ ImageUrl,name, id, type, isFavorited }: ICardProps) => {
-    
+const CharacterCard = ({ ImageUrl, name, id, type, isFavorited }: ICardProps) => {
+
     const [isFavorite, setIsFavorite] = useState<boolean>(isFavorited);
     const dispatch = useDispatch();
 
@@ -30,13 +31,13 @@ const CharacterCard = ({ ImageUrl,name, id, type, isFavorited }: ICardProps) => 
                 dispatch(setFilmFav({ title: name, id }));
             }
             if (type === 'planets') {
-                dispatch(setPlanetFav({name, id}))
+                dispatch(setPlanetFav({ name, id }))
             }
             if (type === 'starships') {
-                dispatch(setStarshipFav({ name, id}))
+                dispatch(setStarshipFav({ name, id }))
             }
             if (type === 'vehicles') {
-                dispatch(setVehicleFav({ name, id}))
+                dispatch(setVehicleFav({ name, id }))
             }
         }
         else {
@@ -44,10 +45,10 @@ const CharacterCard = ({ ImageUrl,name, id, type, isFavorited }: ICardProps) => 
                 dispatch(removeCharacterFav({ name, id }));
             }
             if (type === 'films') {
-                dispatch(removeFilmFav({ title: name, id}))
+                dispatch(removeFilmFav({ title: name, id }))
             }
-            if (type === 'planets') {       
-                dispatch(removePlanetFav({name, id}))
+            if (type === 'planets') {
+                dispatch(removePlanetFav({ name, id }))
             }
             if (type === 'starships') {
                 dispatch(removeStarshipFav)
@@ -58,16 +59,18 @@ const CharacterCard = ({ ImageUrl,name, id, type, isFavorited }: ICardProps) => 
         }
         setIsFavorite(!isFavorite)
     }
-    
+
     return (
         <Container>
             <button type='button' onClick={() => handleFavourite()}>
-                {!isFavorite ? <MdStarBorder size={32} /> : <MdStar size={32}/>}
+                {!isFavorite ? <MdStarBorder size={32} /> : <MdStar size={32} />}
             </button>
             <img src={ImageUrl} alt={`images ${name}`} />
-            <Link to={`/${type}/${id}`}>
-                <span>{name}</span>
-            </Link>
+            <div className="card-name">
+                <Link to={`/${type}/${id}`}>
+                    <span>{name}</span>
+                </Link>
+            </div>
         </Container>
     )
 }
