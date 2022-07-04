@@ -151,7 +151,6 @@ export default function Home() {
                 ) : !isFavSelected ?
                     (<div className="cards">
                         {characters.map((character) => (
-                            <div>
                                 <Card
                                     key={character.name}
                                     ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
@@ -163,7 +162,6 @@ export default function Home() {
                                     isFavorited={favCharacters.some(
                                         (favorite) => favorite.name === character.name
                                     )} />
-                            </div>
                         ))}
                     </div>) : (
                         <div className="cards">
