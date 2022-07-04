@@ -23,13 +23,20 @@ export const Container = styled.header`
         justify-content: space-between;
         align-items: center;
         transition: all 0.5s ease-in;
-        margin-right:30px;
         color:white;
         text-decoration:none;
         
         &:hover {
             color: ${({ theme }) => transparentize(0, theme.colors.primary.light)}
         }
+
+        svg {
+            margin-right:0.5rem;
+        }
+    }
+    
+    a + a {
+        margin-left:1.5rem
     }
 
     @media screen and (max-width:480px) {

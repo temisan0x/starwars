@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 // import CharactersPage from './pages/CharactersPage';
 
 function App() {
+  
   return (
     <BrowserRouter>
       <Routes>
