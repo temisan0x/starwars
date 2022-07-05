@@ -1,4 +1,3 @@
-import { transparentize } from 'polished';
 import styled, { css } from 'styled-components';
 
 interface IPaginationBtnProps {
