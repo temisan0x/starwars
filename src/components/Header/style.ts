@@ -6,6 +6,7 @@ export const Container = styled.header`
     align-items: center;
     justify-content: space-between;
     padding: 0 2rem;
+    font-size:1rem;
 
     img {
         width: 80px;
@@ -39,13 +40,14 @@ export const Container = styled.header`
         margin-left:1.5rem
     }
 
-    @media screen and (max-width:480px) {
+    @media screen and (max-width:500px) {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
 
         nav{
-            flex-direction: column;
-            justify-content: center !important;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between !important;
 
             a  + a {
                 margin-left:0 !important;
@@ -53,7 +55,6 @@ export const Container = styled.header`
         }
 
         a {
-            width: 100%;
             margin-bottom: 1.5rem;
         }
     }

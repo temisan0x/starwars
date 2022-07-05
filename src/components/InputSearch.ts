@@ -4,7 +4,7 @@ export const InputSearch = styled.input`
     width:32rem;
     height:3rem;
     border-radius: 0.5rem;
-    border: 2px solid ${({ theme }) => theme.colors.light[900]};
+    border: 2px solid ${({ theme }) => theme.colors.light[900]}
     padding: 0 1rem;
     outline: none;
     transition: all 0.3s ease-in;
@@ -12,6 +12,11 @@ export const InputSearch = styled.input`
 
     $:focus {
         border: 2px solid ${({ theme }) => theme.colors.primary.main};
+    }
+
+    @media screen and (max-width:973px){
+        width: 25rem;
+        padding: 0 1rem;
     }
 
     @media screen and (max-width: 480px) {
