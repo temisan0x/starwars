@@ -52,7 +52,7 @@ export const Films = () => {
     useEffect(() => { 
         setLoading(true)
         getFilteredData();
-    })
+    },[getFilteredData])
 
     return (
         <div>
