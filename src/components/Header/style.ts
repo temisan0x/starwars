@@ -43,6 +43,8 @@ export const Container = styled.header`
     @media screen and (max-width:500px) {
         flex-direction: column;
         align-items: center;
+        padding: 0 1rem;
+        font-size:0.8rem;
 
         nav{
             flex-direction: row;
@@ -56,6 +58,10 @@ export const Container = styled.header`
 
         a {
             margin-bottom: 1.5rem;
+        }
+
+        svg {
+            width: 20px;
         }
     }
 `

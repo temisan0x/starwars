@@ -5,7 +5,7 @@ import { Card, PaginationBtn, SelectBtn } from '../../components/index';
 import { RootState } from "../../redux/rootReducer";
 import { ICharacterFav } from '../../redux/slices/Character.slice';
 import { Character } from "../../types/Character.type";
-import { CharacterDataTypes } from '../../types/CharacterDataTypes';
+import { CompleteDataTypes } from '../../types/CompleteDataType';
 import { getUrlId } from "../../utils/getUrlId";
 import { debounce } from "lodash";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
@@ -13,19 +13,22 @@ import { Container } from "./styles";
 import { InputSearch } from "../../components/InputSearch";
 import { Loading } from "../../components/Loading";
 
+//useState, A hook that with a state value and a method, 
+//useState, usually used for manipulation of the DOM{Document Object Model};
 export default function Home() {
-    const [data, setData] = useState<CharacterDataTypes>();
+    const [data, setData] = useState<CompleteDataTypes>();
     const [characters, setCharacters] = useState<Character[]>([]);
-    const [inputSearch, setInputSearch] = useState<string>('')
+    const [inputSearch, setInputSearch] = useState<string>('');
     const [pages, setPages] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(true);
     const [isFavSelected, setIsFavSelected] = useState<boolean>(false);
 
-    //passed characters from Character reducer
+    //access the redux store state
     const favCharacters = useSelector(
         (state: RootState) => state.characters
     );
 
+    //fetch data from the api
     const getData = useCallback(async () => {
         try {
             const response = await swapi.get(`/people/?pages=${pages}`);
@@ -125,7 +128,7 @@ export default function Home() {
                             <>
                                 <PaginationBtn onClick={() => setPages(pages - 1)} >{pages - 1}</PaginationBtn>
                                 <PaginationBtn isActive>{pages}</PaginationBtn>
-                                {data?.next && (
+                                {!data?.previous && (
                                     <PaginationBtn onClick={() => setPages(pages + 1)} >{pages + 1}</PaginationBtn>
                                 )}
                             </>
@@ -151,17 +154,17 @@ export default function Home() {
                 ) : !isFavSelected ?
                     (<div className="cards">
                         {characters.map((character) => (
-                                <Card
-                                    key={character.name}
-                                    ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
-                                        character.url,
-                                    )}.jpg`}
-                                    name={character.name}
-                                    id={character.url}
-                                    type="characters"
-                                    isFavorited={favCharacters.some(
-                                        (favorite) => favorite.name === character.name
-                                    )} />
+                            <Card
+                                ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
+                                    character.url,
+                                )}.jpg`}
+                                key={character.name}
+                                name={character.name}
+                                id={getUrlId(character.url)}
+                                type="characters"
+                                isFavorited={favCharacters.some(
+                                    (favorite) => favorite.name === character.name
+                                )} />
                         ))}
                     </div>) : (
                         <div className="cards">

@@ -1,6 +1,6 @@
 import { Character } from './Character.type';
 
-export interface CharacterDataTypes {
+export interface CompleteDataTypes {
     count: number;
     next: string | null;
     previous: string | null;
