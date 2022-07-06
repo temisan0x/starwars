@@ -31,7 +31,7 @@ export default function Home() {
     //fetch data from the api
     const getData = useCallback(async () => {
         try {
-            const response = await swapi.get(`/people/?pages=${pages}`);
+            const response = await swapi.get(`/people/?page=${pages}`);
             const fetchedData = await response.data;
             setData(fetchedData);
             setCharacters(fetchedData.results);
@@ -168,8 +168,8 @@ export default function Home() {
                         ))}
                     </div>) : (
                         <div className="cards">
-                            {favCharacters.length > 0 && favCharacters.map((character: ICharacterFav) => (
-                                <div>
+                                {favCharacters.length > 0
+                                    && favCharacters.map((character: ICharacterFav) => (
                                     <Card
                                         key={character.name}
                                         ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
@@ -180,7 +180,6 @@ export default function Home() {
                                         type="characters"
                                         isFavorited
                                     />
-                                </div>
                             ))}
 
                             {favCharacters.length === 0 && (

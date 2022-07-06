@@ -13,7 +13,7 @@ import { Vehicle } from '../../types/Vehicle.type';
 
 export const Films = () => {
     const [data, setData] = useState()
-    const [films, setFilms] = useState<Vehicle[]>([]);
+    const [vehicles, setVehicles] = useState<Vehicle[]>([]);
 
     return ( 
         <div>
