@@ -44,6 +44,16 @@ export const Films = () => {
         }
     }, [inputSearch]);
 
+    useEffect(() => {
+        setLoading(true);
+        getData();
+    }, [getData]);
+
+    useEffect(() => { 
+        setLoading(true)
+        getFilteredData();
+    })
+
     return (
         <div>
             films
