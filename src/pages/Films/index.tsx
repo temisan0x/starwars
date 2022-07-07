@@ -16,7 +16,7 @@ import { Container } from './style';
 export const Films = () => {
     const [films, setFilms] = useState<Film[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
-    const [isFavSelected, setFavSelected] = useState(true);
+    const [isFavSelected, setFavSelected] = useState(false);
     const [inputSearch, setInputSearch] = useState<string>('');
     const [pages, setPages] = useState<number>(1);
 
@@ -83,21 +83,34 @@ export const Films = () => {
 
                 <div className="select">
                     <SelectBtn
-                        isSelected={isFavSelected === true}
-                        onClick={() => setFavSelected(true)}
+                        type="button"
+                        isSelected={isFavSelected === false}
+                        onClick={() => setFavSelected(false)}
                     >
                         films
                     </SelectBtn>
                     <SelectBtn
-                        isSelected={isFavSelected === false}
-                        onClick={() => setFavSelected(false)}
+                        type="button"
+                        isSelected={isFavSelected === true}
+                        onClick={() => setFavSelected(true)}
                     >
                         favourite films(s)
                     </SelectBtn>
                 </div>
             </div>
 
-            {loading ? <Loading/> : <div>hello</div>}
+            {loading ?
+                (
+                    <div className="loading">
+                        <Loading />
+                        <p>fetching data</p>
+                    </div>
+                ) :
+                !isFavSelected ? (
+                    <div>card</div>
+                ) : (
+                    <div>fav cards</div>
+                )}
 
         </Container>
     )
