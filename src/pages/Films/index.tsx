@@ -36,7 +36,7 @@ export const Films = () => {
     }, []);
 
     console.log(getData())
-    
+
     const getFilteredData = useCallback(async () => {
         try {
             const res = await swapi.get(`films/?search=${inputSearch}`);
@@ -58,7 +58,7 @@ export const Films = () => {
         getFilteredData();
     }, [getFilteredData]);
 
-    function handleInputChange(event:React.ChangeEvent<HTMLInputElement>) {
+    function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
         setInputSearch(event.target.value);
     };
 
@@ -66,13 +66,39 @@ export const Films = () => {
 
     return (
         <Container>
-            <div>
+            <div className="title">
                 <h1>Films - {''}
                     <span>Star Wars</span>
                 </h1>
             </div>
 
-            
+            <div className="header">
+                {!isFavSelected && (
+                    <InputSearch
+                        type="text"
+                        placeholder="search films"
+                        onChange={(event) => debounceOnChange(event)}
+                    />
+                )}
+
+                <div className="select">
+                    <SelectBtn
+                        isSelected={isFavSelected === false}
+                        onClick={() => setFavSelected(false)}
+                    >
+                        films
+                    </SelectBtn>
+                    <SelectBtn
+                        isSelected={isFavSelected === true}
+                        onClick={() => setFavSelected(true)}
+                    >
+                        favourite films(s)
+                    </SelectBtn>
+                </div>
+            </div>
+
+            {loading ? <Loading/> : <div>hello</div>}
+
         </Container>
     )
 }

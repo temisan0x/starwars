@@ -75,7 +75,7 @@ export default function Home() {
         <Container>
             <div className="title">
                 <h1>
-                    Name - {''}
+                    Characters - {''}
                     <span>Star Wars</span>
                 </h1>
             </div>
