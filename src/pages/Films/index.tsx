@@ -83,14 +83,14 @@ export const Films = () => {
 
                 <div className="select">
                     <SelectBtn
-                        isSelected={isFavSelected === false}
-                        onClick={() => setFavSelected(false)}
+                        isSelected={isFavSelected === true}
+                        onClick={() => setFavSelected(true)}
                     >
                         films
                     </SelectBtn>
                     <SelectBtn
-                        isSelected={isFavSelected === true}
-                        onClick={() => setFavSelected(true)}
+                        isSelected={isFavSelected === false}
+                        onClick={() => setFavSelected(false)}
                     >
                         favourite films(s)
                     </SelectBtn>
