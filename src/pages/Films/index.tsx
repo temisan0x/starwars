@@ -17,13 +17,14 @@ export const Films = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [isFavSelected, setFavSelected] = useState(true);
     const [inputSearch, setInputSearch] = useState<string>('');
+    const [pages, setPages] = useState<number>(1);
 
 
     const filmFav = useSelector((state: RootState) => state.films);
 
     const getData = useCallback(async () => {
         try {
-            const res = await swapi.get('films/');
+            const res = await swapi.get(`films/`);
             const fetchedData = res.data;
             setFilms(fetchedData.results);
         }
@@ -33,8 +34,10 @@ export const Films = () => {
         }
     }, []);
 
+    console.log(getData())
+    
     const getFilteredData = useCallback(async () => {
-        try { 
+        try {
             const res = await swapi.get(`films/?search=${inputSearch}`);
             const fetchedData = await res.data;
             setFilms(fetchedData.results);
@@ -49,14 +52,23 @@ export const Films = () => {
         getData();
     }, [getData]);
 
-    useEffect(() => { 
+    useEffect(() => {
         setLoading(true)
         getFilteredData();
-    },[getFilteredData])
+    }, [getFilteredData]);
+
+    function handleInputChange(event:React.ChangeEvent<HTMLInputElement>) {
+        setInputSearch(event.target.value);
+    }
 
     return (
         <div>
-            films
+            {films.map((film) => (
+                <div id={getUrlId(film.url)}>
+                    {film.title}
+                </div>
+            ))
+            }
         </div>
     )
 }
