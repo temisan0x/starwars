@@ -9,6 +9,7 @@ import { getUrlId } from '../../utils/getUrlId';
 import { SelectBtn } from '../../components';
 import { RootState } from '../../redux/rootReducer';
 import { Film } from '../../types/Film.types';
+import { Container } from './style';
 
 
 
@@ -59,16 +60,19 @@ export const Films = () => {
 
     function handleInputChange(event:React.ChangeEvent<HTMLInputElement>) {
         setInputSearch(event.target.value);
-    }
+    };
+
+    const debounceOnChange = debounce(handleInputChange, 500);
 
     return (
-        <div>
-            {films.map((film) => (
-                <div id={getUrlId(film.url)}>
-                    {film.title}
-                </div>
-            ))
-            }
-        </div>
+        <Container>
+            <div>
+                <h1>Films - {''}
+                    <span>Star Wars</span>
+                </h1>
+            </div>
+
+            
+        </Container>
     )
 }
