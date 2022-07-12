@@ -10,7 +10,7 @@ export const SelectBtn = styled.button<ISelectBtnProps>`
     background: transparent;
     border: 0;
     padding: 5px;
-    font-size: 17px;
+    font-size: 15px;
 
     ${({ theme, isSelected }) => isSelected && css`
         border-bottom: 2px solid ${theme.colors.primary.main};

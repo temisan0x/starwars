@@ -40,7 +40,7 @@ export const Container = styled.div`
             }
         }
 
-        @media screen and (max-width:900px) {
+        @media screen and (max-width:950px) {
             flex-direction: column;
             justify-content:center;
 

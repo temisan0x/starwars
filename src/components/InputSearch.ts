@@ -14,7 +14,7 @@ export const InputSearch = styled.input`
         border: 2px solid ${({ theme }) => theme.colors.primary.main};
     }
 
-    @media screen and (max-width:973px){
+    @media screen and (max-width:1054px){
         width: 25rem;
         padding: 0 1rem;
     }

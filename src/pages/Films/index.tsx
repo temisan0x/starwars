@@ -107,7 +107,22 @@ export const Films = () => {
                     </div>
                 ) :
                 !isFavSelected ? (
-                    <div>card</div>
+                    <div className="cards">
+                        {films.map((film) => (
+                            <Card
+                                ImageUrl={`https://starwars-visualguide.com/assets/img/films/${getUrlId(
+                                    film.url,
+                                )}.jpg`}
+                                type="films"
+                                name={film.title}
+                                key={film.title}
+                                id={getUrlId(film.url)}
+                                isFavorited={filmFav.some(
+                                    (favorite) => favorite.title === film.title
+                                )}
+                            />
+                        ))}
+                    </div>
                 ) : (
                     <div>fav cards</div>
                 )}
