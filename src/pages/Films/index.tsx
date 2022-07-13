@@ -94,7 +94,7 @@ export const Films = () => {
                         isSelected={isFavSelected === true}
                         onClick={() => setFavSelected(true)}
                     >
-                        favourite films(s)
+                        favourite films
                     </SelectBtn>
                 </div>
             </div>
