@@ -40,6 +40,13 @@ export const Container = styled.div`
             }
         }
 
+        .loading {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
         @media screen and (max-width:950px) {
             flex-direction: column;
             justify-content:center;

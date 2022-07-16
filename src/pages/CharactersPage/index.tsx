@@ -3,12 +3,15 @@ import { useParams } from "react-router-dom";
 import { useCharacter } from "../../hooks/useCharacter";
 import {swapi} from '../../api/api'
 import { Character } from "../../types/Character.type";
+import { Container } from "./styles";
 
 const CharactersPage = () => {
     const [data, setData] = useState<Character>();
-    const { films, homeworld, loading:isloadingCharacter, planets, starships, vehicles } =
-        useCharacter(data); //passed our states & redeclared a loading state
-    const [loading, setLoading] = useState<boolean>(true)
+    const { films,
+        homeworld,
+        loading: isloadingCharacter,
+        planets, starships, vehicles } = useCharacter(data); //passed our states & redeclared a loading state
+    const [loading, setLoading] = useState<boolean>(true);
     const { id } = useParams();
 
     const getCharactersData = useCallback(async () => {
@@ -27,9 +30,9 @@ const CharactersPage = () => {
 
     if(loading) return <div>Loading</div>
     return (
-        <div>
+        <Container>
         {data?.name}
-        </div>
+        </Container>
     )
 };
 
