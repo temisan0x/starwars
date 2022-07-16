@@ -18,7 +18,8 @@ export const Container = styled.div`
             bottom: -2px;
             left: 0;
         }
-        }
+    }
+       
 
         @media screen and (max-width: 480px) {
         h1 {
@@ -38,19 +39,7 @@ export const Container = styled.div`
         button + button {
             margin-left: 2rem;
         }
-        }
-
-        .loading {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-top: 2rem;
-
-        > span {
-            font-size: 2rem;
-        }
-        }
+    }
 
         @media screen and (max-width: 950px) {
         flex-direction: column;
@@ -63,6 +52,18 @@ export const Container = styled.div`
         .pagination {
             margin-top: 1rem;
         }
+        }
+    }
+
+    .loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2rem;
+
+        > span {
+            font-size: 2rem;
         }
     }
 `;
