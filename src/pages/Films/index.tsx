@@ -103,7 +103,7 @@ export const Films = () => {
                 (
                     <div className="loading">
                         <Loading />
-                        <p>fetching data</p>
+                        <span>fetching data</span>
                     </div>
                 ) :
                 !isFavSelected ? (
