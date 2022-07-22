@@ -29,3 +29,8 @@ const characterSlice = createSlice({
 
 export const { setCharacterFav, removeCharacterFav} = characterSlice.actions;
 export default characterSlice.reducer;
+
+/**
+ * created actions 
+ * 
+ */
