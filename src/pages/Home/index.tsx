@@ -168,19 +168,17 @@ export default function Home() {
                         ))}
                     </div>) : (
                         <div className="cards">
-                                {favCharacters.length > 0
-                                    && favCharacters.map((character: ICharacterFav) => (
+                            {favCharacters.length > 0
+                                && favCharacters.map((character: ICharacterFav) => (
                                     <Card
-                                        key={character.name}
-                                        ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
-                                            character.id,
-                                        )}.jpg`}
+                                        ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${character.id}.jpg`}
                                         name={character.name}
+                                        key={character.name}
                                         id={character.id}
                                         type="characters"
                                         isFavorited
                                     />
-                            ))}
+                                ))}
 
                             {favCharacters.length === 0 && (
                                 <div>
