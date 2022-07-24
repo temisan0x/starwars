@@ -155,9 +155,7 @@ export default function Home() {
                     (<div className="cards">
                         {characters.map((character) => (
                             <Card
-                                ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(
-                                    character.url,
-                                )}.jpg`}
+                                ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(character.url)}.jpg`}
                                 key={character.name}
                                 name={character.name}
                                 id={getUrlId(character.url)}
@@ -165,7 +163,7 @@ export default function Home() {
                                 isFavorited={favCharacters.some(
                                     (favorite) => favorite.name === character.name
                                 )} />
-                        ))}
+                        ))} 
                     </div>) : (
                         <div className="cards">
                             {favCharacters.length > 0
