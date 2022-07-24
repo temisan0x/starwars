@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     starships,
     vehicles,
     planets
-})
+});
 
-export type RootState = ReturnType <typeof rootReducer>;
+export type RootState = ReturnType<typeof rootReducer>
 export default rootReducer;
