@@ -54,8 +54,8 @@ export default function Home() {
         }
     },[inputSearch])
 
-    
-    useEffect(() => {
+
+    useEffect(() => { 
         setLoading(true);
         getData()
     }, [getData]);
