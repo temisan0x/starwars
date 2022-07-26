@@ -42,20 +42,19 @@ export default function Home() {
     },[pages])
 
 
-    //search characters
-    const getFilteredData = useCallback(async () => {
+    const getFilteredData = useCallback(async () => { 
         try {
             const response = await swapi.get(`/people/?search=${inputSearch}`);
             const returnedData = await response.data;
             setData(returnedData);
-            setCharacters(returnedData.results);
+            setCharacters(returnedData.results)
         } catch {
         } finally {
             setLoading(false)
         }
-    }, [inputSearch]);
+    },[inputSearch])
 
-
+    
     useEffect(() => {
         setLoading(true);
         getData()
