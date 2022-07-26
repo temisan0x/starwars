@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { swapi } from "../../api/api";
 import { Card, PaginationBtn, SelectBtn } from '../../components/index';
-import { RootState } from "../../redux/rootReducer";
+import { RootState } from '../../redux/rootReducer';
 import { ICharacterFav } from '../../redux/slices/Character.slice';
 import { Character } from "../../types/Character.type";
 import { CompleteDataTypes } from '../../types/CompleteDataType';
@@ -25,8 +25,8 @@ export default function Home() {
 
     //access the redux store state
     const favCharacters = useSelector(
-        (state: RootState) => state.characters
-    );
+        (state: RootState)=> state.characters
+    )
 
     //fetch data from the api
     const getData = useCallback(async () => {
