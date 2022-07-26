@@ -13,8 +13,7 @@ import { Container } from "./styles";
 import { InputSearch } from "../../components/InputSearch";
 import { Loading } from "../../components/Loading";
 
-//useState, A hook that with a state value and a method, 
-//useState, usually used for manipulation of the DOM{Document Object Model};
+
 export default function Home() {
     const [data, setData] = useState<CompleteDataTypes>();
     const [characters, setCharacters] = useState<Character[]>([]);
