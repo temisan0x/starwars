@@ -39,7 +39,8 @@ export default function Home() {
         } finally {
             setLoading(false)
         }
-    }, [pages]);
+    },[pages])
+
 
     //search characters
     const getFilteredData = useCallback(async () => {
