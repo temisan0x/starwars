@@ -15,12 +15,13 @@ import { Loading } from "../../components/Loading";
 
 
 export default function Home() {
+
     const [data, setData] = useState<CompleteDataTypes>();
     const [characters, setCharacters] = useState<Character[]>([]);
-    const [inputSearch, setInputSearch] = useState<string>('');
-    const [pages, setPages] = useState<number>(1);
+    const [inputSearch, setInputSearch] = useState('');
+    const [pages, setPages]= useState<number>(1)
     const [loading, setLoading] = useState<boolean>(true);
-    const [isFavSelected, setIsFavSelected] = useState<boolean>(false);
+    const [isFavSelected, setIsFavSelected] = useState<boolean>(false)
 
     //access the redux store state
     const favCharacters = useSelector(
