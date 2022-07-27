@@ -69,7 +69,7 @@ export default function Home() {
         setInputSearch(event.target.value)
     }
 
-    const debounceOnChange = debounce(handleInputChange, 500);
+    const debounceOnChange = debounce(handleInputChange,1);
 
     return (
         <Container>
