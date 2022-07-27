@@ -173,7 +173,7 @@ export default function Home() {
                                     <Card
                                         ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${character.id}.jpg`}
                                         name={character.name}
-                                gender={character.gender}
+                                        gender={character.gender}
                                         key={character.name}
                                         id={character.id}
                                         type="characters"
