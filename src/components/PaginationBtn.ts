@@ -21,7 +21,6 @@ export const PaginationBtn = styled.button<IPaginationBtnProps>`
         text-align: center;
     }
 
-
 ${({ isActive }) => isActive && css`
     background-color: ${({ theme }) => theme.colors.primary.light};
     border-radius:50%;

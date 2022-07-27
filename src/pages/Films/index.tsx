@@ -111,7 +111,7 @@ export const Films = () => {
                         {films.map((film) => (
                             <Card
                                 ImageUrl={`https://starwars-visualguide.com/assets/img/films/${getUrlId(
-                                    film.url,
+                                    film.url
                                 )}.jpg`}
                                 type="films"
                                 name={film.title}
@@ -119,8 +119,7 @@ export const Films = () => {
                                 id={getUrlId(film.url)}
                                 isFavorited={filmFav.some(
                                     (favorite) => favorite.title === film.title
-                                )}
-                            />
+                                )} gender={''}                            />
                         ))}
                     </div>
                 ) : (

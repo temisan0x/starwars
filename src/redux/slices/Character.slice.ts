@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface ICharacterFav{
     id: string
     name: string
+    gender: string
 };
 
 const initialState: ICharacterFav[] = [];
@@ -13,14 +14,16 @@ const characterSlice = createSlice({
     reducers: {
         setCharacterFav(state, action: PayloadAction<ICharacterFav>) {
             const isFavAlready = state.find(
-                (set) => set.id === action.payload.id  && set.name === action.payload.name
+                (set) => set.id === action.payload.id
+                    && set.name === action.payload.name
+                && set.gender === action.payload.gender
             ) 
             if (isFavAlready) return state;
-            return [...state, {id: action.payload.id, name: action.payload.name}]
+            return [...state, {id: action.payload.id, name: action.payload.name, gender: action.payload.gender}]
         },
         removeCharacterFav(state, action) {
             return state.filter(
-                (set) => set.id !== action.payload.id || set.name !== action.payload.name
+                (set) => set.id !== action.payload.id || set.name !== action.payload.name || set.gender !== action.payload.gender
             )
         }
     }

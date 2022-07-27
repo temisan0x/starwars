@@ -11,13 +11,14 @@ import { Container } from './style';
 
 interface ICardProps {
     ImageUrl: string;
-    name: string
+    name: string;
+    gender: string;
     id: string;
     type: 'characters' | 'films' | 'starships' | 'vehicles' | 'planets';
     isFavorited: boolean;
 }
 
-const CharacterCard = ({ ImageUrl, name, id, type, isFavorited }: ICardProps) => {
+const CharacterCard = ({ ImageUrl, name, gender, id, type, isFavorited }: ICardProps) => {
 
     const [isFavorite, setIsFavorite] = useState<boolean>(isFavorited);
     const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const CharacterCard = ({ ImageUrl, name, id, type, isFavorited }: ICardProps) =>
     function handleFavourite() {
         if (isFavorited === false) {
             if (type === 'characters') {
-                dispatch(setCharacterFav({ name, id }));
+                dispatch(setCharacterFav({ name, id, gender }));
             }
             if (type === 'films') {
                 dispatch(setFilmFav({ title: name, id }));
@@ -69,6 +70,7 @@ const CharacterCard = ({ ImageUrl, name, id, type, isFavorited }: ICardProps) =>
             <div className="card-name">
                 <Link to={`/${type}/${id}`}>
                     <span>{name}</span>
+                    <span className='gender'>{gender}</span>
                 </Link>
             </div>
         </Container>

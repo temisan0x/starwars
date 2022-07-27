@@ -158,11 +158,14 @@ export default function Home() {
                                 ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${getUrlId(character.url)}.jpg`}
                                 key={character.name}
                                 name={character.name}
+                                gender={character.gender}
                                 id={getUrlId(character.url)}
                                 type="characters"
                                 isFavorited={favCharacters.some(
                                     (favorite) => favorite.name === character.name
-                                )} />
+                                )}
+                                
+                            />
                         ))} 
                     </div>) : (
                         <div className="cards">
@@ -171,6 +174,7 @@ export default function Home() {
                                     <Card
                                         ImageUrl={`https://starwars-visualguide.com/assets/img/characters/${character.id}.jpg`}
                                         name={character.name}
+                                gender={character.gender}
                                         key={character.name}
                                         id={character.id}
                                         type="characters"

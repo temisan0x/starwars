@@ -67,14 +67,27 @@ export const Container = styled.div`
         a {
             background-color: ${({ theme }) => theme.colors.primary.main};
             width: 100%;
-            height:2rem;
+            height:3rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             color: ${({ theme }) => theme.colors.dark[900]};
             transition: all 0.3s ease-in;
 
+            .gender {
+                background-color:#000000;
+                color:#fff;
+                width:100%;
+                text-align: center;
+                overflow: hidden;
+
+                &:hover {
+                    background-color: ${({ theme }) => theme.colors.primary.main};
+                    transition: all 0.3s ease-in;
+                }
+            }
             &:hover {
                 background-color: ${({ theme }) => theme.colors.light[900]};
             }
