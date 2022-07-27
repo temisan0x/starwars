@@ -119,7 +119,7 @@ export const Films = () => {
                                 id={getUrlId(film.url)}
                                 isFavorited={filmFav.some(
                                     (favorite) => favorite.title === film.title
-                                )} gender={''}                            />
+                                )} gender={''} />
                         ))}
                     </div>
                 ) : (

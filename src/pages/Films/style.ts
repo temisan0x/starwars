@@ -19,7 +19,6 @@ export const Container = styled.div`
             left: 0;
         }
     }
-       
 
         @media screen and (max-width: 480px) {
         h1 {
