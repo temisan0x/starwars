@@ -163,8 +163,7 @@ export default function Home() {
                                 type="characters"
                                 isFavorited={favCharacters.some(
                                     (favorite) => favorite.name === character.name
-                                )}
-                                
+                                )}                         
                             />
                         ))} 
                     </div>) : (
