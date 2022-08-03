@@ -10,6 +10,7 @@ import { SelectBtn } from '../../components';
 import { RootState } from '../../redux/rootReducer';
 import { Film } from '../../types/Film.types';
 import { Container } from './style';
+import { IFilmFav } from '../../redux/slices/Film.slice';
 
 
 
@@ -122,10 +123,25 @@ export const Films = () => {
                                 )} gender={''} />
                         ))}
                     </div>
+                ) : filmFav.length > 0 ? (
+                    <div className="cards">
+                        {filmFav.map((film) => (
+                            <Card
+                                ImageUrl={`https://starwars-visualguide.com/assets/img/films/${film.id}.jpg`}
+                                name={film.title}
+                                key={film.title}
+                                id={film.id}
+                                type="films"
+                                isFavorited
+                                gender={''}
+                            />
+                        ))}
+                    </div>
                 ) : (
-                    <div>fav cards</div>
+                    <div className="no-favourite">
+                        <span>Nenhum filme favorito</span>
+                    </div>
                 )}
-
         </Container>
     )
 }

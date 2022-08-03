@@ -1,4 +1,5 @@
 export interface Film {
+    id: string;
     characters: string[];
     created: string;
     director: string;
