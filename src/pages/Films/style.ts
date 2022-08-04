@@ -65,4 +65,16 @@ export const Container = styled.div`
             font-size: 2rem;
         }
     }
+
+    .cards {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+
+        > div {
+            margin: 1rem;
+        }
+    }
 `;
