@@ -19,7 +19,6 @@ export const Films = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [isFavSelected, setFavSelected] = useState(false);
     const [inputSearch, setInputSearch] = useState<string>('');
-    const [pages, setPages] = useState<number>(1);
 
 
     const filmFav = useSelector((state: RootState) => state.films);
@@ -139,7 +138,7 @@ export const Films = () => {
                     </div>
                 ) : (
                     <div className="no-favourite">
-                        <span>Nenhum filme favorito</span>
+                        <span>No fav Film</span>
                     </div>
                 )}
         </Container>
