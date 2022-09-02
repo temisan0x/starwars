@@ -68,7 +68,8 @@ const CharacterCard = ({ ImageUrl, name, gender, id, type, isFavorited }: ICardP
             </button>
             <img src={ImageUrl} alt={`images ${name}`} />
             <div className="card-name">
-                <Link to={`/${type}/${id}`}>
+                <Link to={'#'}>
+                {/* `/${type}/${id}` */}
                     <span>{name}</span>
                     <span className='gender'>{gender}</span>
                 </Link>

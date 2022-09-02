@@ -22,15 +22,15 @@ export const Header = () => {
                     <MdMovie size={20} />
                     films
                 </Link>
-                <Link to="/vehicles">
+                <Link to="#">
                     <SiStarship size={20} />
                     vehicles
                 </Link>
-                <Link to="/starships">
+                <Link to="#">
                     <SiStarship size={20} />
                     starships
                 </Link>
-                <Link to="/Planet">
+                <Link to="#">
                     <BiPlanet size={20} />
                     planets
                 </Link>
